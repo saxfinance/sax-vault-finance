@@ -725,5 +725,5 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         super._beforeFallback();
     }
 
-    receive () external payable {}
+    receive () external payable override {}
 }
