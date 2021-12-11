@@ -12,8 +12,6 @@ import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/ut
 import "./Interfaces.sol";
 import "../interfaces/IyVaultV2.sol";
 
-// TODO  Rabbit，Alpaca，Venus，Eps，Belt
-
 /**
  * @dev Implementation of a vault to deposit funds for yield optimizing.
  * This is the contract that receives funds and that users interface with.
