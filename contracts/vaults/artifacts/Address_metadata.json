@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to the address type",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/praxy.sol": "Address"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/vaults/praxy.sol": {
+			"keccak256": "0x8495dd7da4cf833a1015c1d79a0874531f1c3a63d0edd9998f52ba7127ca5101",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f778a5687e5cd0cc0325f02c640445983fa3f0741de5a667019cc8a0d6345132",
+				"dweb:/ipfs/QmfBwCEDH5Pgu9QU7iVFDr9qKGzZR6B3pfTGBxAHcboimJ"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,108 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "wbnbAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "unwrapBNB",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "wbnbAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/BnbHelper.sol": "BnbH"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08",
+				"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC"
+			]
+		},
+		"contracts/vaults/BnbHelper.sol": {
+			"keccak256": "0x4a0c8fb80b4cc28bae2edf88671835468e8ed4deb01184d3539445b03a657d51",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://fb46f556ba7b56b96df9ea93b79c4859426eed23b65bb945b77f41696b446f79",
+				"dweb:/ipfs/QmZcw11KvhpGiqmmGuAyJtp6E5Eu7AkM9tyd97MLKmk26A"
+			]
+		},
+		"contracts/vaults/Interfaces.sol": {
+			"keccak256": "0xc5330a2d81c425373fbdb5458d0715aa41ee1d5b13b5a4d1f85fce0826a31911",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://cc406623bde6d25ae48792656a35d6e3672ce26fdb9dd36cd9c7f5351075faa8",
+				"dweb:/ipfs/QmV1sfuMGbnWtEC2QEpW7RKScwg4YGn18Y1c67iphxAVxU"
+			]
+		}
+	},
+	"version": 1
+}

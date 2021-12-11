@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "exit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/StrategyEllipsis.sol": "FeeDistribution"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/vaults/StrategyEllipsis.sol": {
+			"keccak256": "0xdaf338c4436e5d901d19e2c20db08c7705633627a1413e85c0388cd099d1ec4d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://fb48468d5bef40c61af66d0082a635b493ea1d9062396787792966ca8b4d5ac8",
+				"dweb:/ipfs/QmZQYraWn72RFgBmjgf9s59pjG7dYUqT8BjjyGXNXKoK2t"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/test.sol": "StrategyBel"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/vaults/test.sol": {
+			"keccak256": "0xcba8e9aaf530f1884b3fdc9eb2e8c71bcbcea0ad7b3894f10067c79ada77a789",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a523f87094e7031d5303c8f94c00dbd6dc003a5b4b6df21de07fb40613cfa6b4",
+				"dweb:/ipfs/QmNRkakVK1kirbSK9He7c8Bc6GXDjfMVwdhxgWcS4NjKtL"
+			]
+		}
+	},
+	"version": 1
+}

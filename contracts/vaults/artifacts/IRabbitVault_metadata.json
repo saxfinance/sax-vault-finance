@@ -1,0 +1,291 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "banks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "tokenAddr",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "ibTokenAddr",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "isOpen",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "canDeposit",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "canWithdraw",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalVal",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalDebt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalDebtShare",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalReserve",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastInterestTime",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IRabbitVault.TokenBank",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "config",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountToken",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "totalToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "share",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"deposit(address,uint256)": {
+					"details": "Add more ERC20 to the bank. Hope to get some good returns."
+				},
+				"totalToken(address)": {
+					"details": "Return the total ERC20 entitled to the token holders. Be careful of unaccrued interests."
+				},
+				"withdraw(address,uint256)": {
+					"details": "Withdraw ERC20 from the bank by burning the share tokens."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/StrategyRabbit.sol": "IRabbitVault"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+			"keccak256": "0xb419e68addcb82ecda3ad3974b0d2db76435ce9b08435a04d5b119a0c5d45ea5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a85355cc4f2554f4a8d334336d66b48d616abf1d90ec3d6b602e825c6fe63f0c",
+				"dweb:/ipfs/QmTJYtsKJjBy3ShAt4kEjvM6nfVS8ZAFQqE29fG16tUP8d"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol": {
+			"keccak256": "0x0dd1e9b19801e3e7d900fbf4182d81e1afd23ad7be39504e33df6bbcba91d724",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5e30d594df25d0651c2cd6f85d856e5fc9f3dbae68d017e1da33eb3c7e2f1ecc",
+				"dweb:/ipfs/QmPgkV99jZr3Zs9ex8dJ5j22oX4wDuDtMCnXNy67bTwgAB"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/Initializable.sol": {
+			"keccak256": "0xd8e4eb08dcc1d1860fb347ba5ffd595242b9a1b66d49a47f2b4cb51c3f35017e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7dbc89479d30592e82442edc38053b380f611037a5e6ceafc7bf57a7aa1f0305",
+				"dweb:/ipfs/QmcdYtt56WmjeYvsFjK69FnahnAriw88VzY3XRZwXkQKKN"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0xfc5ea91fa9ceb1961023b2a6c978b902888c52b90847ac7813fe3b79524165f6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a6b81dcc816857a9d981386f6d8de49198420ee41cdc0ecade366ab412174d03",
+				"dweb:/ipfs/QmV2vznMT6m9qo3pFMAWi3Nz3UDhwesgwFxeXe6Tod3v8A"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0xbbf8a21b9a66c48d45ff771b8563c6df19ba451d63dfb8380a865c1e1f29d1a0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://062688aac76e27ab50157a9d645700cf92e3c0d51d3d860be1d2e1a0c04a87d0",
+				"dweb:/ipfs/QmfXxppWAiSTeH8YNn2EtMPDgzrLeJ5rjRq8knEbje88mX"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol": {
+			"keccak256": "0x73bef0a5dec3efde8183c4858d90f683ed2771656c4329647b4d5b0f89498fd5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ef58fce3c601850d4137223f8df56635f7fa3691e42bd6e2e296747f821a2540",
+				"dweb:/ipfs/QmSiJPHcY399BPDgimEosXzsW38MSXPTCxqT1ibbF4AdoZ"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol": {
+			"keccak256": "0x46034cd5cca740f636345c8f7aebae0f78adfd4b70e31e6f888cccbe1086586e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0b9f36bfde7168be120a14da6c8c54cde5e5df07b79c5239752e07e5fb1ac046",
+				"dweb:/ipfs/QmZfEjoDzj3EfBkZB8X9dyBGt81tQ1KmFPuY3cz2yqWQDK"
+			]
+		},
+		"@openzeppelin/contracts/math/SafeMath.sol": {
+			"keccak256": "0xcc78a17dd88fa5a2edc60c8489e2f405c0913b377216a5b26b35656b2d0dab52",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://526dc85e1f9b9b45830e202568d267d93dde7a4fcccf4ad7798dadcd92304d3c",
+				"dweb:/ipfs/QmaoXMB972J3cSDLtBq3xBo4jLwqD2uzXTwujtSPqkYVhR"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08",
+				"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/SafeERC20.sol": {
+			"keccak256": "0xf12dfbe97e6276980b83d2830bb0eb75e0cf4f3e626c2471137f82158ae6a0fc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b3a849c2d95e85463909e5b5c920b13e7a11216ca14127085e16d22b9379d52a",
+				"dweb:/ipfs/QmUg3CZDbCCcQdroEpexBy5ZFd5vD1UWijWQq9qHZjtJNQ"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0x28911e614500ae7c607a432a709d35da25f3bc5ddc8bd12b278b66358070c0ea",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://256c8c8af5eb072bc473226ab2b2187149b8fc04f5f4a4820db22527f5ce8e3c",
+				"dweb:/ipfs/QmRvi5BhnL7Rxf85KrJhwM6RRhukm4tzoctRdgQEheNyiN"
+			]
+		},
+		"contracts/vaults/Interfaces.sol": {
+			"keccak256": "0x1895c876dee7aae42ff4b9f8189850ab65c83bfaacfdbd8701a3b2a52d0bacb4",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bfc76e466bcd730b7dd2aedc4961ecb510177ca2b72ec4bfd333c6abec9c6230",
+				"dweb:/ipfs/QmSqUsQZcRfQpGPnNVguvVJaFDRaSncrWvWxVNBAZ3Urb2"
+			]
+		},
+		"contracts/vaults/StrategyRabbit.sol": {
+			"keccak256": "0x111ba2d5e71815645c162b7ecba662832f40602a5a50257b1ac138cea0775e3e",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://7ae5f278648473285be477f746c8c5f877e1e7fe998707fbd0c5fbc8cf66aafe",
+				"dweb:/ipfs/Qmb4CheGyfsVoLRCaDWstP2s7SRux3FnmajBxuczbZHo8F"
+			]
+		}
+	},
+	"version": 1
+}

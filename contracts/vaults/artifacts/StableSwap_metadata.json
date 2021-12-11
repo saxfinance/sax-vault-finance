@@ -1,0 +1,161 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[3]",
+						"name": "amounts",
+						"type": "uint256[3]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "min_mint_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "add_liquidity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "i",
+						"type": "uint256"
+					}
+				],
+				"name": "balances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[3]",
+						"name": "amounts",
+						"type": "uint256[3]"
+					},
+					{
+						"internalType": "bool",
+						"name": "deposit",
+						"type": "bool"
+					}
+				],
+				"name": "calc_token_amount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "get_virtual_price",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[3]",
+						"name": "min_amount",
+						"type": "uint256[3]"
+					}
+				],
+				"name": "remove_liquidity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_token_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int128",
+						"name": "i",
+						"type": "int128"
+					},
+					{
+						"internalType": "uint256",
+						"name": "min_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "remove_liquidity_one_coin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/StrategyEllipsis.sol": "StableSwap"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/vaults/StrategyEllipsis.sol": {
+			"keccak256": "0xdaf338c4436e5d901d19e2c20db08c7705633627a1413e85c0388cd099d1ec4d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://fb48468d5bef40c61af66d0082a635b493ea1d9062396787792966ca8b4d5ac8",
+				"dweb:/ipfs/QmZQYraWn72RFgBmjgf9s59pjG7dYUqT8BjjyGXNXKoK2t"
+			]
+		}
+	},
+	"version": 1
+}

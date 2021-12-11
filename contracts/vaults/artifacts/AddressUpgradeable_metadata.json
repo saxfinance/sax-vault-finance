@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/vaults/StrategyVenusV3.sol": "AddressUpgradeable"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/vaults/StrategyVenusV3.sol": {
+			"keccak256": "0x3da8f97f3b59fab45fd9411b55e3932504be67d198745fecdfd6e9d2ad9561fc",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2ed8928396639505d541c705c6c1fb095ce2120f9894ffa4f7bc3729944592fc",
+				"dweb:/ipfs/QmaAw9t3MmRuLwnYggQ5xMegXHxfrTmTNSXhpNMfwW7mN5"
+			]
+		}
+	},
+	"version": 1
+}
