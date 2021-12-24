@@ -605,11 +605,11 @@
 			]
 		},
 		"contracts/vaults/Interfaces.sol": {
-			"keccak256": "0x1895c876dee7aae42ff4b9f8189850ab65c83bfaacfdbd8701a3b2a52d0bacb4",
+			"keccak256": "0x9e4fecaec4c38278fdb2dc2dc9144193351db692cdbbd72c3e9e1e8bf29ec1bb",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://bfc76e466bcd730b7dd2aedc4961ecb510177ca2b72ec4bfd333c6abec9c6230",
-				"dweb:/ipfs/QmSqUsQZcRfQpGPnNVguvVJaFDRaSncrWvWxVNBAZ3Urb2"
+				"bzz-raw://3753ae4f95406c057313a0b9e454e61e31d33659f82e67f929fdad3e8572c7e8",
+				"dweb:/ipfs/QmcMT8MB6kVF8932MDZmrvT9dWWze76BhvwCMc2euei3du"
 			]
 		},
 		"contracts/vaults/StrategyAlpaca.sol": {

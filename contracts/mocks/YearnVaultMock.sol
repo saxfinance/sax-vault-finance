@@ -16,7 +16,7 @@ contract YearnVaultMock is  ERC20 {
   using SafeERC20 for IDetailedERC20;
   using SafeMath for uint256;
 
-  uint256 public min = 9500;
+  uint256 public constant min = 9500;
   uint256 public constant max = 10000;
 
   IYearnController public controller;

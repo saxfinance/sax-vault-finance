@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.12;
+pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 //import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -441,9 +441,12 @@ contract Saxophone is  ReentrancyGuard {
   function flushActiveVault() internal returns (uint256) {
 
     Vault.Data storage _activeVault = _vaults.last();
-    uint256 _depositedAmount = _activeVault.depositAll();
-
-    emit FundsFlushed(_depositedAmount);
+    uint256 _depositedAmount = 0;
+    if(token.balanceOf(address(this)) > 0){
+        _depositedAmount = _activeVault.depositAll();   
+        
+        emit FundsFlushed(_depositedAmount);
+    }
 
     return _depositedAmount;
   }
@@ -490,6 +493,7 @@ contract Saxophone is  ReentrancyGuard {
 
     _cdp.totalDeposited = _cdp.totalDeposited.sub(_decreasedValue, "Exceeds withdrawable amount");
     _cdp.checkHealth(_ctx, "Action blocked: unhealthy collateralization ratio");
+    // TODO 考虑是否去除次刷新。
     if(_amount >= flushActivator) {
       flushActiveVault();
     }
@@ -570,6 +574,7 @@ contract Saxophone is  ReentrancyGuard {
     }
 
     xtoken.mint(msg.sender, _amount);
+    // TODO 考虑是否去除。
     if(_amount >= flushActivator) {
       flushActiveVault();
     }
@@ -736,7 +741,7 @@ contract Saxophone is  ReentrancyGuard {
     // Pull the funds from the buffer.
     uint256 _bufferedAmount = Math.min(_amount, token.balanceOf(address(this)));
 
-    if (_recipient != address(this)) {
+    if (_recipient != address(this) && _bufferedAmount > 0) {
       token.safeTransfer(_recipient, _bufferedAmount);
     }
 

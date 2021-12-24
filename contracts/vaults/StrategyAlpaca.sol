@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0;
+pragma solidity 0.6.12;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
@@ -244,7 +244,7 @@ contract StrategyAlpaca is OwnableUpgradeable, PausableUpgradeable, ReentrancyGu
                 earnedAlpacaBalance.mul(priceMin).div(1e18),
                 alpacaToWantPath,
                 address(this),
-                now.add(600)
+                block.number
             );
         }
 

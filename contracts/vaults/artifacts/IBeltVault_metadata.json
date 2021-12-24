@@ -334,7 +334,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -437,11 +437,11 @@
 			]
 		},
 		"contracts/vaults/Strategybelt.sol": {
-			"keccak256": "0x8bc1a029eb14148d98d71b2b88c22b3b0a222c60cda3274c21f3f5f53b43dfe6",
+			"keccak256": "0x264fc7e33e10d9b9f7febf5da916b8974e5c6b5ac5133a8d855e7def972d15ec",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c0209d99ffeca7004597aefe98466928edd2bad3ce02dd1097d0e1494885a6e5",
-				"dweb:/ipfs/Qmc1PeoyxbzDpyFeVJz46UtXVc5ArCfUvkALZDNLH8nYUo"
+				"bzz-raw://bfdb9a116ad3fe68dbf9abab94d4296b497a2d55962729eb3eeb070d650953b9",
+				"dweb:/ipfs/QmaUTViceqyCB4h1hvwBEUQQ8icR5ZiqKBjTp3jhaXTAMz"
 			]
 		}
 	},

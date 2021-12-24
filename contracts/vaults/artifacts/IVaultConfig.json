@@ -45,38 +45,13 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"getInterestRate(uint256,uint256)": "c6dfa13f",
-			"getReserveBps()": "249c11bd"
+			"getReservePoolBps()": "09956f66"
 		}
 	},
 	"abi": [
 		{
-			"inputs": [
-				{
-					"internalType": "uint256",
-					"name": "debt",
-					"type": "uint256"
-				},
-				{
-					"internalType": "uint256",
-					"name": "floating",
-					"type": "uint256"
-				}
-			],
-			"name": "getInterestRate",
-			"outputs": [
-				{
-					"internalType": "uint256",
-					"name": "",
-					"type": "uint256"
-				}
-			],
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
 			"inputs": [],
-			"name": "getReserveBps",
+			"name": "getReservePoolBps",
 			"outputs": [
 				{
 					"internalType": "uint256",

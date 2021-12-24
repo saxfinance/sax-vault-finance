@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0;
+pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -265,7 +265,7 @@ contract StrategyRabbit is OwnableUpgradeable, PausableUpgradeable, ReentrancyGu
                 earnedAlpacaBalance.mul(priceMin).div(1e18),
                 rabbitToWantPath,
                 address(this),
-                now.add(600)
+                block.number
             );
         }
 

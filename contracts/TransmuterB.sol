@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.6.12;
 
 import "@openzeppelin/contracts/GSN/Context.sol";
@@ -60,7 +61,7 @@ contract TransmuterB is Context {
     uint256 public lastDepositBlock;
 
     ///@dev values needed to calculate the distribution of base asset in proportion for saTokens staked
-    uint256 public pointMultiplier = 10e18;
+    uint256 public constant pointMultiplier = 10e18;
 
     uint256 public totalDividendPoints;
     uint256 public unclaimedDividends;

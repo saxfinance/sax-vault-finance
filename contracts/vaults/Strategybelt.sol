@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0;
+pragma solidity 0.6.12;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
@@ -86,7 +86,7 @@ contract StrategyBelt is OwnableUpgradeable, PausableUpgradeable, ReentrancyGuar
 
     /*
      * Parameters on BSC:
-     * poolId: 
+     * poolId: busd no,
      * _masterBeltAddress: 0xD4BbC80b9B102b77B21A06cb77E954049605E6c1
      * _beltToken: 0xE0e514c71282b6f4e823703a39374Cf58dc3eA4f
      * beltVault(MultiStrategyToken): 0x55E1B1e49B969C018F2722445Cd2dD9818dDCC25
@@ -216,7 +216,7 @@ contract StrategyBelt is OwnableUpgradeable, PausableUpgradeable, ReentrancyGuar
                 earnedBeltBalance.mul(priceMin).div(1e18),
                 beltToWantPath,
                 address(this),
-                now.add(600)
+                block.number
             );
         }
 

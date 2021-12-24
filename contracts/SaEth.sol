@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.12;
+pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
@@ -53,7 +53,7 @@ contract SaEth is AccessControl, ERC20("SA ETH", "saETH") {
 
   /// @dev Mints tokens to a recipient.
   ///
-  /// This function reverts if the caller does not have the minter role.
+  /// This function reverts if the caller does not have the whiteList role.
   ///
   /// @param _recipient the account to mint tokens to.
   /// @param _amount    the amount of tokens to mint.

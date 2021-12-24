@@ -336,6 +336,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "totalBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -496,19 +509,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "wantLockedTotal",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "wbnbAddress",
 				"outputs": [
 					{
@@ -605,11 +605,11 @@
 	},
 	"sources": {
 		"contracts/vaults/StrategyVenusV3.sol": {
-			"keccak256": "0x3da8f97f3b59fab45fd9411b55e3932504be67d198745fecdfd6e9d2ad9561fc",
+			"keccak256": "0xdc09729c1618ed417d2ad8e8aaf839d11f821903957c6ec13cb1266aeb110895",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://2ed8928396639505d541c705c6c1fb095ce2120f9894ffa4f7bc3729944592fc",
-				"dweb:/ipfs/QmaAw9t3MmRuLwnYggQ5xMegXHxfrTmTNSXhpNMfwW7mN5"
+				"bzz-raw://e2ec789013d8bf0e62896bc5c6b580a474812352965a56070b8ea62609d40771",
+				"dweb:/ipfs/QmTMe2AQ5K1jhqXfNxctaekbPJhUyZXL7s5Daghsk5Fcv1"
 			]
 		}
 	},

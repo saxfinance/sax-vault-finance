@@ -45,20 +45,22 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
+			"accrueInterest()": "a6afed95",
 			"allowance(address,address)": "dd62ed3e",
 			"approve(address,uint256)": "095ea7b3",
 			"balanceOf(address)": "70a08231",
 			"balanceOfUnderlying(address)": "3af9e669",
 			"borrow(uint256)": "c5ebeaec",
 			"borrowBalanceCurrent(address)": "17bfdfbc",
+			"borrowBalanceStored(address)": "95dd9193",
+			"getAccountSnapshot(address)": "c37f68e2",
 			"mint(uint256)": "a0712d68",
 			"redeem(uint256)": "db006a75",
 			"redeemUnderlying(uint256)": "852a12e3",
 			"repayBorrow(uint256)": "0e752702",
 			"totalSupply()": "18160ddd",
 			"transfer(address,uint256)": "a9059cbb",
-			"transferFrom(address,address,uint256)": "23b872dd",
-			"underlying()": "6f307dc3"
+			"transferFrom(address,address,uint256)": "23b872dd"
 		}
 	},
 	"abi": [
@@ -111,6 +113,19 @@
 			],
 			"name": "Transfer",
 			"type": "event"
+		},
+		{
+			"inputs": [],
+			"name": "accrueInterest",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
 		},
 		{
 			"inputs": [
@@ -234,6 +249,59 @@
 				}
 			],
 			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "borrowBalanceStored",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "getAccountSnapshot",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
 			"type": "function"
 		},
 		{
@@ -373,19 +441,6 @@
 					"internalType": "bool",
 					"name": "",
 					"type": "bool"
-				}
-			],
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [],
-			"name": "underlying",
-			"outputs": [
-				{
-					"internalType": "address",
-					"name": "",
-					"type": "address"
 				}
 			],
 			"stateMutability": "nonpayable",

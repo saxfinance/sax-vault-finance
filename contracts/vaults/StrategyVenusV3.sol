@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.6.2 <0.8.0;
+pragma solidity 0.6.12;
 
 library AddressUpgradeable {
     /**
@@ -1253,12 +1253,11 @@ contract StrategyVenus is Initializable, OwnableUpgradeable, ReentrancyGuardUpgr
                     0,
                     venusToWantPath,
                     address(this),
-                    now.add(600)
+                    block.number
                 );
             }
         }
 
-        lastEarnBlock = block.number;
         earnedAmt = wantLockedInHere();
         if (earnedAmt != 0) {
             _supply(earnedAmt);
@@ -1275,7 +1274,7 @@ contract StrategyVenus is Initializable, OwnableUpgradeable, ReentrancyGuardUpgr
         _withdraw(_wantAmt);
 
         uint256 wantBal = wantLockedInHere();
-        IERC20(wantAddress).safeTransfer(owner(), wantBal);
+        IERC20(wantAddress).safeTransfer(msg.sender, wantBal);
 
         emit Withdraw(wantAddress, _wantAmt, wantBal);
         
@@ -1327,7 +1326,7 @@ contract StrategyVenus is Initializable, OwnableUpgradeable, ReentrancyGuardUpgr
         supMin = brw;
     }
 
-    function wantLockedTotal() public view returns (uint256) {
+    function totalBalance() public view returns (uint256) {
         (uint256 sup, uint256 brw, ) = updateBalance();
         return wantLockedInHere().add(sup).sub(brw);
     }

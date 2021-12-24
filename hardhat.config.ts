@@ -13,7 +13,7 @@ module.exports = {
   networks: {
     localhost: {
       url: "http://127.0.0.1:8545/",
-      // accounts: [PrivateKey],
+      accounts: [PrivateKey],
       timeout:200000000,
       gasPrice: 5100000000,
       gas: 5000000
@@ -22,7 +22,7 @@ module.exports = {
       forking: {
         // url: "https://eth-mainnet.alchemyapi.io/v2/2gFIk0YnN7Mg_iKQHVNZ-GMmp69VUVhc"
         // url: "https://bsc-dataseed4.defibit.io/"
-        url: "http://52.220.8.73:8545",  //bsc 节点
+        url: "http://54.254.118.147:8545",  //bsc 节点
         // blockNumber: 12270411,
         throwOnTransactionFailures: true,
         throwOnCallFailures: true
@@ -36,9 +36,9 @@ module.exports = {
       accounts: [PrivateKey]
     },
     bscmainnet: {
-      url: "https://bsc-dataseed1.ninicoin.io/",
       chainId: 56,
-      gas: 500000,
+      url: "http://54.254.118.147:8545",
+      gas: 5000000,
       gasPrice: 5100000000,
       accounts: [PrivateKey],
       gasMultiplier: 1.2,
@@ -62,13 +62,26 @@ module.exports = {
     // },
   },
   solidity: {
-    version: "0.6.12",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200
-      }
-    }
+      compilers: [
+        {
+          version: "0.6.12",
+          settings: {
+            optimizer: {
+              enabled: true,
+              runs: 200
+            }
+          }
+        },
+        {
+          version: "0.8.7",
+          settings: {
+            optimizer: {
+              enabled: true,
+              runs: 200
+            }
+          }
+        }
+      ]
   },
   paths: {
     sources: "./contracts",

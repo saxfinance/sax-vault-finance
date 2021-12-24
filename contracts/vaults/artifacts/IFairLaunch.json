@@ -48,7 +48,7 @@
 			"addPool(uint256,address,bool)": "7abceffd",
 			"deposit(address,uint256,uint256)": "0efe6a8b",
 			"harvest(uint256)": "ddc63262",
-			"pendingRabbit(uint256,address)": "1d5cdce4",
+			"pendingAlpaca(uint256,address)": "94443b73",
 			"poolLength()": "081e3eda",
 			"setPool(uint256,uint256,bool)": "46ca6bea",
 			"updatePool(uint256)": "51eb05a6",
@@ -130,7 +130,7 @@
 					"type": "address"
 				}
 			],
-			"name": "pendingRabbit",
+			"name": "pendingAlpaca",
 			"outputs": [
 				{
 					"internalType": "uint256",

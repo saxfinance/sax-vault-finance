@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.6.2 <0.8.0;
+pragma solidity 0.6.12;
 
 library AddressUpgradeable {
     /**
@@ -1053,6 +1053,10 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
 
     address[] public EPSToWantPath;
 
+    mapping (address => bool) public keepers;
+    
+    
+    event KeepersSet(address[] keepers, bool[] states);
     event Deposit(address wantAddress, uint256 amountReceived, uint256 amountDeposited);
     event Withdraw(address wantAddress, uint256 amountRequested, uint256 amountWithdrawn);
 
@@ -1066,6 +1070,12 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         _;
     }
 
+    modifier onlyVaultOrKeeper() {
+        require (msg.sender == vault || keepers[msg.sender], "Must from vault/keeper");
+        _;
+    }
+
+    // busd-poolId: 1
     function initialize(
         address _wantAddress,
         address _pancakeRouterAddress,
@@ -1089,7 +1099,7 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         vault = _vault;
         
         safetyCoeffNumer = 10;
-        safetyCoeffDenom = 1;
+        safetyCoeffDenom = 9;
 
         IERC20(epsAddress).safeApprove(pancakeRouterAddress, uint256(-1));
         IERC20(wantAddress).safeApprove(pancakeRouterAddress, uint256(-1));
@@ -1104,7 +1114,6 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         onlyVault
         nonReentrant
         whenNotPaused
-        returns (uint256)
     {
         IERC20(wantAddress).safeTransferFrom(
             address(msg.sender),
@@ -1120,8 +1129,6 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         }
 
         emit Deposit(wantAddress, _wantAmt, diff);
-
-        return diff;
     }
 
     function _deposit(uint256 _wantAmt) internal {
@@ -1133,15 +1140,6 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         require(isPoolSafe(), "StrategyEllipsis: pool unsafe");
     }
 
-    function _depositAdditional(uint256 amount1, uint256 amount2, uint256 amount3) internal {
-        uint256[3] memory depositArr;
-        depositArr[0] = amount1;
-        depositArr[1] = amount2;
-        depositArr[2] = amount3;
-        StableSwap(ellipsisSwapAddress).add_liquidity(depositArr, 0);
-        LpTokenStaker(ellipsisStakeAddress).deposit(poolId, IERC20(eps3Address).balanceOf(address(this)));
-    }
-    
     function withdraw(uint256 _wantAmt)
         external
         onlyVault
@@ -1173,7 +1171,7 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         require(isPoolSafe(), "StrategyEllipsis: pool unsafe");
     }
 
-    function earn() external whenNotPaused onlyEOA {
+    function earn() external whenNotPaused onlyVaultOrKeeper {
         uint256 earnedAmt;
         LpTokenStaker(ellipsisStakeAddress).withdraw(poolId, 0);
         FeeDistribution(ellipsisDistibAddress).exit();
@@ -1186,22 +1184,22 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
                 0,
                 EPSToWantPath,
                 address(this),
-                now.add(600)
-            );
-        }
-        
-        uint256 busdBal = IERC20(busdAddress).balanceOf(address(this));
-        uint256 usdcBal = IERC20(usdcAddress).balanceOf(address(this));
-        uint256 usdtBal = IERC20(usdtAddress).balanceOf(address(this));
-        if (busdBal.add(usdcBal).add(usdtBal) != 0) {
-            _depositAdditional(
-                busdBal,
-                usdcBal,
-                usdtBal
+                block.number
             );
         }
 
-        lastEarnBlock = block.number;
+        uint256 bal = 0;
+        if(wantAddress == busdAddress){
+            bal = IERC20(busdAddress).balanceOf(address(this));
+        }else if(wantAddress == usdcAddress){
+            bal = IERC20(usdcAddress).balanceOf(address(this));
+        }else if(wantAddress == usdtAddress){
+            bal = IERC20(usdtAddress).balanceOf(address(this));
+        }
+
+        if (bal != 0) {
+            _deposit(bal);
+        }
     }
 
     function _pause() override internal {
@@ -1232,27 +1230,6 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         _unpause();
     }
 
-    
-    function getTokenIndex(address tokenAddr) internal pure returns (uint256) {
-        if (tokenAddr == busdAddress) {
-            return 0;
-        } else if (tokenAddr == usdcAddress) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    function getTokenIndexInt(address tokenAddr) internal pure returns (int128) {
-        if (tokenAddr == busdAddress) {
-            return 0;
-        } else if (tokenAddr == usdcAddress) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
     function eps3ToWant() public view returns (uint256) {
         require(isPoolSafe(), "StrategyEllipsis: pool unsafe");
         (uint256 curEps3Bal, )= LpTokenStaker(ellipsisStakeAddress).userInfo(poolId, address(this));
@@ -1274,7 +1251,7 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         return most <= least.mul(safetyCoeffNumer).div(safetyCoeffDenom);
     }
 
-    function wantLockedTotal() public view returns (uint256) {
+    function totalBalance() public view returns (uint256) {
         return wantLockedInHere().add(
             eps3ToWant()
         );
@@ -1304,6 +1281,26 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
             adm := sload(slot)
         }
     }
+    
+    function getTokenIndex(address tokenAddr) internal pure returns (uint256) {
+        if (tokenAddr == busdAddress) {
+            return 0;
+        } else if (tokenAddr == usdcAddress) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    function getTokenIndexInt(address tokenAddr) internal pure returns (int128) {
+        if (tokenAddr == busdAddress) {
+            return 0;
+        } else if (tokenAddr == usdcAddress) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
 
     function setEPSToWantPath(address[] memory newPath) public onlyOwner {
         EPSToWantPath = newPath;
@@ -1318,6 +1315,14 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
 
     function setVault(address _vault) external onlyOwner {
         vault = _vault;
+    }
+
+    function setKeepers(address[] calldata _keepers, bool[] calldata _states) external onlyOwner {
+        uint256 n = _keepers.length;
+        for(uint256 i = 0; i < n; i++) {
+            keepers[_keepers[i]] = _states[i];
+        }
+        emit KeepersSet(_keepers, _states);
     }
 
     receive() external payable {}

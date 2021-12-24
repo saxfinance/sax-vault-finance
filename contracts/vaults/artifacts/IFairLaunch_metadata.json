@@ -77,7 +77,7 @@
 						"type": "address"
 					}
 				],
-				"name": "pendingRabbit",
+				"name": "pendingAlpaca",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -231,7 +231,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/vaults/StrategyRabbit.sol": "IFairLaunch"
+			"contracts/vaults/StrategyAlpaca.sol": "IFairLaunch"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -334,19 +334,19 @@
 			]
 		},
 		"contracts/vaults/Interfaces.sol": {
-			"keccak256": "0x1895c876dee7aae42ff4b9f8189850ab65c83bfaacfdbd8701a3b2a52d0bacb4",
+			"keccak256": "0x9e4fecaec4c38278fdb2dc2dc9144193351db692cdbbd72c3e9e1e8bf29ec1bb",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://bfc76e466bcd730b7dd2aedc4961ecb510177ca2b72ec4bfd333c6abec9c6230",
-				"dweb:/ipfs/QmSqUsQZcRfQpGPnNVguvVJaFDRaSncrWvWxVNBAZ3Urb2"
+				"bzz-raw://3753ae4f95406c057313a0b9e454e61e31d33659f82e67f929fdad3e8572c7e8",
+				"dweb:/ipfs/QmcMT8MB6kVF8932MDZmrvT9dWWze76BhvwCMc2euei3du"
 			]
 		},
-		"contracts/vaults/StrategyRabbit.sol": {
-			"keccak256": "0x111ba2d5e71815645c162b7ecba662832f40602a5a50257b1ac138cea0775e3e",
+		"contracts/vaults/StrategyAlpaca.sol": {
+			"keccak256": "0x6fc4224aadc78c1aad07e0fbe506c5048f3938e1ca9b5cff3fd0f228c6dc0dea",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7ae5f278648473285be477f746c8c5f877e1e7fe998707fbd0c5fbc8cf66aafe",
-				"dweb:/ipfs/Qmb4CheGyfsVoLRCaDWstP2s7SRux3FnmajBxuczbZHo8F"
+				"bzz-raw://97cdbe8acba28611a9aed2c79fb33c2292d09eb54d1200a961449f43db74cd94",
+				"dweb:/ipfs/Qmcc3zJrML7YPXCybNBQ6ECoybAhmSpbLw4Zn4ayXhu5XY"
 			]
 		}
 	},

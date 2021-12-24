@@ -1,4 +1,5 @@
-pragma solidity ^0.6.12;
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity 0.6.12;
 
 interface IWETH9 {
     event  Approval(address indexed src, address indexed guy, uint wad);
