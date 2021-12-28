@@ -1099,7 +1099,7 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         vault = _vault;
         
         safetyCoeffNumer = 10;
-        safetyCoeffDenom = 9;
+        safetyCoeffDenom = 1;
 
         IERC20(epsAddress).safeApprove(pancakeRouterAddress, uint256(-1));
         IERC20(wantAddress).safeApprove(pancakeRouterAddress, uint256(-1));
@@ -1149,7 +1149,7 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
         uint256 wantBal = IERC20(wantAddress).balanceOf(address(this));
         _withdraw(_wantAmt);
         wantBal = IERC20(wantAddress).balanceOf(address(this)).sub(wantBal);
-        IERC20(wantAddress).safeTransfer(owner(), wantBal);
+        IERC20(wantAddress).safeTransfer(msg.sender, wantBal);
 
         emit Withdraw(wantAddress, _wantAmt, wantBal);
 
