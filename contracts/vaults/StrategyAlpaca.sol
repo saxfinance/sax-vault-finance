@@ -244,7 +244,7 @@ contract StrategyAlpaca is OwnableUpgradeable, PausableUpgradeable, ReentrancyGu
                 earnedAlpacaBalance.mul(priceMin).div(1e18),
                 alpacaToWantPath,
                 address(this),
-                block.number
+                now
             );
         }
 

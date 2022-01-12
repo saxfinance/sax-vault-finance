@@ -216,7 +216,7 @@ contract StrategyBelt is OwnableUpgradeable, PausableUpgradeable, ReentrancyGuar
                 earnedBeltBalance.mul(priceMin).div(1e18),
                 beltToWantPath,
                 address(this),
-                block.number
+                now
             );
         }
 

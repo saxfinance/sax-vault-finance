@@ -493,7 +493,6 @@ contract Saxophone is  ReentrancyGuard {
 
     _cdp.totalDeposited = _cdp.totalDeposited.sub(_decreasedValue, "Exceeds withdrawable amount");
     _cdp.checkHealth(_ctx, "Action blocked: unhealthy collateralization ratio");
-    // TODO 考虑是否去除次刷新。
     if(_amount >= flushActivator) {
       flushActiveVault();
     }
@@ -539,11 +538,17 @@ contract Saxophone is  ReentrancyGuard {
       _amount = _cdp.totalDebt;
     }
     (uint256 _withdrawnAmount, uint256 _decreasedValue) = _withdrawFundsTo(address(this), _amount);
-    //changed to new transmuter compatibillity 
-    _distributeToTransmuter(_withdrawnAmount);
 
     _cdp.totalDeposited = _cdp.totalDeposited.sub(_decreasedValue, "");
-    _cdp.totalDebt = _cdp.totalDebt.sub(_withdrawnAmount, "");
+
+    //changed to new transmuter compatibillity
+    if (_withdrawnAmount >= _cdp.totalDebt){
+      _distributeToTransmuter(_cdp.totalDebt);
+      _cdp.totalDebt = 0;
+    }else{
+      _distributeToTransmuter(_withdrawnAmount);
+      _cdp.totalDebt = _cdp.totalDebt.sub(_withdrawnAmount, "");
+    }
     emit TokensLiquidated(msg.sender, _amount, _withdrawnAmount, _decreasedValue);
 
     return (_withdrawnAmount, _decreasedValue);
@@ -574,7 +579,6 @@ contract Saxophone is  ReentrancyGuard {
     }
 
     xtoken.mint(msg.sender, _amount);
-    // TODO 考虑是否去除。
     if(_amount >= flushActivator) {
       flushActiveVault();
     }

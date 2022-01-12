@@ -265,7 +265,7 @@ contract StrategyRabbit is OwnableUpgradeable, PausableUpgradeable, ReentrancyGu
                 earnedAlpacaBalance.mul(priceMin).div(1e18),
                 rabbitToWantPath,
                 address(this),
-                block.number
+                now
             );
         }
 

@@ -1184,7 +1184,7 @@ contract StrategyEllipsis is Initializable, OwnableUpgradeable, ReentrancyGuardU
                 0,
                 EPSToWantPath,
                 address(this),
-                block.number
+                now
             );
         }
 

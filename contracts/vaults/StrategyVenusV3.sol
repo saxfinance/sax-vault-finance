@@ -1253,7 +1253,7 @@ contract StrategyVenus is Initializable, OwnableUpgradeable, ReentrancyGuardUpgr
                     0,
                     venusToWantPath,
                     address(this),
-                    block.number
+                    now
                 );
             }
         }
