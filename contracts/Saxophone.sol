@@ -76,6 +76,10 @@ contract Saxophone is  ReentrancyGuard {
     uint256 fee
   );
 
+  event DepositFeeUpdated(
+    uint256 fee
+  );
+
   event CollateralizationLimitUpdated(
     uint256 limit
   );
@@ -152,6 +156,9 @@ contract Saxophone is  ReentrancyGuard {
   /// @dev The percent of each profitable harvest that will go to the rewards contract.
   uint256 public harvestFee;
 
+  // @dev Compatible with the third party fund platform deposit when cutting off the situation, deposit 100 actual deposit 99.98
+  uint256 public depositFee;
+
   /// @dev The total amount the native token deposited into the system that is owned by external users.
   uint256 public totalDeposited;
 
@@ -198,6 +205,7 @@ contract Saxophone is  ReentrancyGuard {
     governance = _governance;
     sentinel = _sentinel;
     flushActivator = 100000 ether;// change for non 18 digit tokens
+    depositFee = 0;
 
     //_setupDecimals(_token.decimals());
     uint256 COLL_LIMIT = MINIMUM_COLLATERALIZATION_LIMIT.mul(2);
@@ -293,6 +301,21 @@ contract Saxophone is  ReentrancyGuard {
     harvestFee = _harvestFee;
 
     emit HarvestFeeUpdated(_harvestFee);
+  }
+
+  /// @dev Sets the deposit fee.
+  ///
+  /// This function reverts if the caller is not the current governance.
+  ///
+  /// @param _depositFee the new deposit fee.
+  function setDepositFee(uint256 _depositFee) external onlyGov {
+
+    // max 1%
+    require(_depositFee <= 100, "Saxophone: deposit fee above maximum.");
+
+    depositFee = _depositFee;
+
+    emit DepositFeeUpdated(_depositFee);
   }
 
   /// @dev Sets the collateralization limit.
@@ -468,12 +491,15 @@ contract Saxophone is  ReentrancyGuard {
     if(_amount >= flushActivator) {
       flushActiveVault();
     }
-    totalDeposited = totalDeposited.add(_amount);
+    uint256 depositRate = PERCENT_RESOLUTION.sub(depositFee);
+    uint256 actualNumber = _amount.mul(depositRate).div(PERCENT_RESOLUTION);
 
-    _cdp.totalDeposited = _cdp.totalDeposited.add(_amount);
+    totalDeposited = totalDeposited.add(actualNumber);
+
+    _cdp.totalDeposited = _cdp.totalDeposited.add(actualNumber);
     _cdp.lastDeposit = block.number;
 
-    emit TokensDeposited(msg.sender, _amount);
+    emit TokensDeposited(msg.sender, actualNumber);
   }
 
   /// @dev Attempts to withdraw part of a CDP's collateral.
